@@ -1,0 +1,23 @@
+{
+  "skill_name": "skill-to-mod",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "my release-gate skill is a checklist I want Claude to run before anything gets pushed or deployed, but it keeps forgetting to load it. can you turn it into a mod so it can't be skipped? the skill is in ./skills/release-gate",
+      "expected_output": "Runs the checker, reports HYBRID with the moment (ship commands) and trust cost, writes a spec, scaffolds a plugin that keeps the skill untouched, and ends with verify_mod.py reporting PASS. Does not modify ./skills/release-gate. Tells the user it is a reminder, not enforcement.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "I have a skill called wordsmith that sets my writing voice and style rules for emails and blog posts. should I make it a Claude Code mod?",
+      "expected_output": "Runs the checker, concludes KEEP_SKILL with a short reason (no moment to hook, no interface), names what fits better or suggests tune-skill if it is not triggering, and generates no files.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "turn my context-guardian skill into a mod: I want a live panel showing how full the context window is, and a warning before it auto-compacts",
+      "expected_output": "Runs the checker, concludes MOD_FIRST, states that the scaffold does not cover panes, loads or points to plugin-authoring, uses session.measure for the threshold and a pane or band for the display, keeps the trust surface to ui calls, and verifies with verify_mod.py.",
+      "files": []
+    }
+  ]
+}

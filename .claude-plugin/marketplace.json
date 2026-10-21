@@ -1,0 +1,14 @@
+{
+  "name": "skill-to-mod",
+  "description": "Skill to Mod: an agent skill that checks whether a skill should become a Claude Code mod, then builds, validates and tests the plugin.",
+  "owner": {
+    "name": "Abdul Rahman P Z"
+  },
+  "plugins": [
+    {
+      "name": "skill-to-mod",
+      "source": "./",
+      "description": "Checks whether a skill should become a Claude Code mod, then builds, validates and tests the plugin and shows what it can touch."
+    }
+  ]
+}
