@@ -32,6 +32,9 @@ trust surface. Say so to the user and justify it.
 - After `maxHolds` holds it lets the command through and shows a toast, so a missing skill can never
   trap a session.
 - `.catch` on every hook fails open.
+- Gates stack. Two gate mods that match the same command each hold it, so the user answers twice.
+  When several checks guard one moment, prefer one gate with several `required` skills
+  (`ship-sentinel`, or a chair skill such as `release-gate-chair`) and say so in each README.
 
 **prime**: `prompt.submit`. When a prompt matches a phrase, one line of `context` tells Claude which
 skill applies. With a gate it fires only while checks are outstanding.
