@@ -1,6 +1,7 @@
 ---
 name: skill-to-mod
 description: Decide whether an existing agent skill should become a Claude Code mod (code that runs inside Claude Code on events like tool calls, prompts, turns and compaction), and if it should, convert it into a validated mod plugin that keeps the original skill bundled. Use whenever the user wants to turn a skill into a mod, "mod-ify" a skill, make a skill run automatically before git push or deploys or on every prompt or after edits, give an existing skill a pane, status line, band or slash command, or asks "can this skill be a mod?", "should this be a mod or a skill?", even if they never say "hooks". Needs Claude Code 2.1.287 or later. Not for writing a brand-new mod with no source skill (use plugin-authoring), writing a new skill (use draft-skill), improving a skill's wording or triggering (use tune-skill), or plain skill packaging (use skill-creator).
+version: 1.0.0
 ---
 
 # Skill to Mod
