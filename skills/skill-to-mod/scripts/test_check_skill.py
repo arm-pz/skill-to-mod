@@ -23,7 +23,7 @@ def verdict_for(description, body):
             "---\nname: demo\ndescription: " + description + "\n---\n\n# Demo\n\n" + body + "\n",
             encoding="utf-8",
         )
-        out = subprocess.run([sys.executable, "-I", str(CHECK), str(folder)], capture_output=True, text=True, check=True)
+        out = subprocess.run([sys.executable, "-I", str(CHECK), str(folder)], capture_output=True, text=True, encoding="utf-8", errors="replace", check=True)
     return json.loads(out.stdout)
 
 

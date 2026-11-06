@@ -61,7 +61,7 @@ def claude_version():
     import subprocess
 
     try:
-        out = subprocess.run(["claude", "--version"], capture_output=True, text=True, timeout=20).stdout
+        out = subprocess.run(["claude", "--version"], capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=20).stdout
     except (OSError, subprocess.SubprocessError):
         return None
     m = re.search(r"(\d+)\.(\d+)\.(\d+)", out)

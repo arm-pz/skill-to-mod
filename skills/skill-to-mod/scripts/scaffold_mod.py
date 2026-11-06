@@ -63,7 +63,7 @@ def check_regexes(sources, flags):
     try:
         r = subprocess.run(
             ["node", "-e", "for (const s of JSON.parse(process.argv[1])) new RegExp(s, process.argv[2])", json.dumps(sources), flags],
-            capture_output=True, text=True, timeout=20)
+            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=20)
     except (OSError, subprocess.SubprocessError):
         print("note: node not found; regular expressions were not test-compiled", file=sys.stderr)
         return
@@ -371,8 +371,9 @@ test('a plugin skill name counts as the check', { options: { mode: 'block', requ
 __STALE_TEST__
 test('after the holds are used up the command is let through, so a missing skill cannot trap the session', { options: { mode: 'block' } }, async ($: any, on: any) => {
   engine(on)
-  expect((await $.tool.call({ tool: 'Bash', command: SHIP })).deny).toBeDefined()
-  expect((await $.tool.call({ tool: 'Bash', command: SHIP })).deny).toBeDefined()
+  for (let i = 0; i < __MAX_HOLDS__; i++) {
+    expect((await $.tool.call({ tool: 'Bash', command: SHIP })).deny).toBeDefined()
+  }
   expect(await $.tool.call({ tool: 'Bash', command: SHIP })).toEqual({ result: 'ok' })
 })
 
@@ -461,7 +462,7 @@ def build_tests(spec, skill_name, plugin):
     if gate:
         example = gate.get("example") or first_literal(gate["match"])
         stale = TEST_STALE if gate.get("staleOnEdit", True) else ""
-        body = fill(TEST_GATE, SHIP_EXAMPLE=js(example), REQUIRED_LIST=js(gate.get("required", [skill_name])), STALE_TEST=stale, CMD=js(cmd or plugin))
+        body = fill(TEST_GATE, SHIP_EXAMPLE=js(example), REQUIRED_LIST=js(gate.get("required", [skill_name])), STALE_TEST=stale, CMD=js(cmd or plugin), MAX_HOLDS=str(gate.get("maxHolds", 2)))
         if not cmd:
             body = body[: body.index("test('the command snoozes and resumes it'")]
         out += body
