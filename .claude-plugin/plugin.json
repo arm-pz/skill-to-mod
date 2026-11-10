@@ -1,7 +1,7 @@
 {
   "name": "skill-to-mod",
   "displayName": "Skill to Mod",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Checks whether a skill should become a Claude Code mod, then builds, validates and tests the plugin and shows what it can touch.",
   "author": { "name": "Abdul Rahman P Z" },
   "repository": "https://github.com/arm-pz/skill-to-mod",
