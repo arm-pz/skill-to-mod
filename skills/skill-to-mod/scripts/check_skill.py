@@ -73,7 +73,7 @@ KNOWLEDGE_RE = (
 )
 
 RISK_SIGNALS = [
-    ("network", r"\b(curl|wget|https?://|webhook|fetch\()", "talks to the network"),
+    ("network", r"\b(curl|wget|https?://|webhook|fetch\()", "mentions URLs or network commands"),
     ("secrets", r"\b(api[_ -]?key|token|secret|password|credential|private key|\.env)\b", "mentions secrets or credentials"),
     ("shell", r"\b(sudo|rm -rf|ssh|chmod|eval|exec)\b", "runs powerful shell commands"),
     ("scripts", r"\bscripts?/", "bundles scripts"),
